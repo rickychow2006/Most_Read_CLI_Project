@@ -15,4 +15,13 @@ class Scraper
         end
     end 
 
+    def second_scrape(read)
+        review_html = open(read.url)
+        review_html_parsed_to_elements = Nokogiri::HTML(review_html)
+        read.rating = review_html_parsed_to_elements.css("[itemprop='ratingValue']").text.strip
+        read.page = review_html_parsed_to_elements.css("[itemprop='numberOfPages']").text.strip
+        read.publisher = review_html_parsed_to_elements.css("#details .row").text.split(/by |\n\n/)[1]
+        read.amazonLink = "https://www.goodreads.com/#{review_html_parsed_to_elements.css("#buyButton").first['href']}"
+    end
+
 end 
