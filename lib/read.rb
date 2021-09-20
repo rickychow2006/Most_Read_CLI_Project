@@ -26,4 +26,26 @@ class Read
           sleep(0)
         end 
     end
+
+    def print_full_review
+        check_for_review
+        print_review_author_and_title
+        puts "-----------------------------------------"
+        puts "Number of Readers: #{@numOfReader}".colorize(:light_blue)
+        puts "-----------------------------------------"
+        puts "Number of Pages: #{@page}".colorize(:light_blue)
+        puts "-----------------------------------------"
+        puts "Publisher: #{@publisher}".colorize(:light_blue)
+        puts "-----------------------------------------"
+        puts "Average Rating: #{@rating}".colorize(:light_blue)
+        puts "-----------------------------------------"
+        puts "Amazon Link: #{@amazonLink}".colorize(:light_blue)
+        puts "-----------------------------------------"
+    end 
+
+    def check_for_review
+        if @read === nil
+          Scraper.new.second_scrape(self)
+        end 
+    end 
 end 

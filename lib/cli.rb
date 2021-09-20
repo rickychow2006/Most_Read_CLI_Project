@@ -23,7 +23,7 @@ class CLI
         puts "Done!".colorize(:light_blue)
         sleep(1)
         main_menu
-        
+        select_or_exit
     end 
 
     def main_menu 
@@ -34,5 +34,16 @@ class CLI
         valid_input(25)
         select_to_index = @@input.to_i - 1
         Read.all[select_to_index].print_full_review
+    end 
+
+    def select_or_exit
+        puts "\n\nWould you like go back to the main menu?\n\n'1' for main menu\n'2' to exit program.".colorize(:light_cyan)
+        valid_input(2)
+        if @@input.to_i == 1
+          main_menu
+          select_or_exit
+        elsif @@input.to_i == 2
+          puts "Good Bye!".colorize(:light_cyan)
+        end 
     end 
 end 
