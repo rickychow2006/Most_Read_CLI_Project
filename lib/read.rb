@@ -1,3 +1,4 @@
+
 class Read 
     
     @@all = []
@@ -27,9 +28,12 @@ class Read
         end 
     end
 
-    def print_full_review
+    def second_scraper
         Scraper.new.second_scrape(self)
-        print_review_author_and_title
+    end 
+
+    def print_full_review
+        print_review_author_and_title        
         puts "-----------------------------------------"
         puts "Number of Readers: #{@numOfReader}".colorize(:light_blue)
         puts "-----------------------------------------"
@@ -43,11 +47,3 @@ class Read
         puts "-----------------------------------------"
     end 
 end 
-
-    
-
-
-
-
-
-
