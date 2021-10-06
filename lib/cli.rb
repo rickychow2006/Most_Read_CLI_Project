@@ -33,9 +33,9 @@ class CLI
         puts "Please enter a number between 1-25 to view that book or 0 to exit the prgoram".colorize(:light_cyan).colorize(:bold)
         valid_input(25)
         select_to_index = @@input.to_i - 1
-        Read.all[select_to_index].second_scraper
         Read.all[select_to_index].print_full_review
     end 
+    
     def select_or_exit
         puts "\n\nWould you like go back to the main menu?\n\n'1' for main menu\n'2' to exit program.".colorize(:light_cyan)
         valid_input(2)

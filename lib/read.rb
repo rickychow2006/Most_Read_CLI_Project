@@ -28,11 +28,8 @@ class Read
         end 
     end
 
-    def second_scraper
-        Scraper.new.second_scrape(self)
-    end 
-
     def print_full_review
+        check_for_review
         print_review_author_and_title        
         puts "-----------------------------------------"
         puts "Number of Readers: #{@numOfReader}".colorize(:light_blue)
@@ -45,5 +42,11 @@ class Read
         puts "-----------------------------------------"
         puts "Amazon Link: #{@amazonLink}".colorize(:light_blue)
         puts "-----------------------------------------"
+    end 
+
+    def check_for_review
+        if self.rating === nil
+          Scraper.new.second_scrape(self)
+        end 
     end 
 end 
